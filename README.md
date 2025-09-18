@@ -1,33 +1,20 @@
 # Managed-Lustre-Samples
 
-This repository contains scripts to help automate connecting GCE VMs (Rocky/RHEL 8-based) to Google Cloud Managed Lustre.
-
-There are two primary methods provided:
-
-1.  **`setup_lustre_client.sh` (Recommended):** A universal setup script that you run *inside* each new VM to configure it manually. This is the most reliable method.
-2.  **`Auto connect to Lustre from VM` (VM-to-VM Automation):** An automation script you run from *one* admin VM to configure *other* VMs. This is faster but requires specific IAM setup to work.
+A repository for guides and scripts to connect GCE VMs to Google Cloud Managed Lustre.
 
 ---
 
-## 1. Universal Manual Script (`setup_lustre_client.sh`)
+## Contents
 
-This is the most reliable method. It's a single script you run manually **inside** any new VM you want to connect to Lustre.
+This repo contains two key components:
 
-### What it Does
-* Takes the Lustre mount point as an argument.
-* Adds the official Google Cloud Lustre repository.
-* Installs the required client packages (`kmod-lustre-client` and `lustre-client`).
-* Creates the `/mnt/lustre` directory.
-* Mounts the Lustre drive.
-* Adds the drive to `/etc/fstab` to make it automatically re-mount if the VM reboots.
+### 1. Main Instruction Guide
 
-### Usage Workflow
+* **File:** [`Auto connect to Lustre from VM.md`](./Auto%20connect%20to%20Lustre%20from%20VM.md)
+* **Description:** This is the main, detailed guide. It contains the complete, step-by-step instructions for the **recommended manual setup process** (which uses the `setup_lustre_client.sh` script).
 
-For any new VM you want to connect (e.g., a new VM named `VMToConnect`):
+### 2. Universal Setup Script
 
-**1. SSH Into Your New VM**
-First, connect to your target VM.
-
-```bash
-# Example using your project's internal DNS pattern:
-ssh your_user@nic0.VMToConnect.your-zone.c.your-project.internal.gcpnode.com
+* **File:** [`setup_lustre_client.sh`](./setup_lustre_client.sh)
+* **Description:** This is the utility script referenced in the main guide. It is designed to be run **inside** a single VM to completely automate its setup (installs client packages, adds the correct repo, mounts Lustre, and makes the mount permanent).
+* **Usage:** All instructions for using this script are located in the main `Auto connect to Lustre from VM.md` guide.
