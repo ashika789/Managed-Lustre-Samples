@@ -124,7 +124,7 @@ Execute the script, passing your Lustre mount point as the one and only argument
 Bash
 
 ```
-./setup_lustre_client.sh XX.XX.XX.X@tcp:/filetest
+./setup_lustre_client.sh XX.XX.XX.X@tcp:/YourFileSystemName
 ```
 
 The script will now run all the steps automatically.
